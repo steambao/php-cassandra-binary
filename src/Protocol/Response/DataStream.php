@@ -243,7 +243,7 @@ class DataStream {
 	 */
 	public function readMap($keyType, $valueType) {
 		$map = array();
-		$count = $this->readShort();
+		$count = strlen($this->data) > 0 ? $this->readShort() : 0;
 		for ($i = 0; $i < $count; ++$i) {
 			$map[$this->readByType($keyType, true)] = $this->readByType($valueType, true);
 		}
